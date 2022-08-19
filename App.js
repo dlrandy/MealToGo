@@ -1,22 +1,14 @@
+import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import {
-  Platform,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{ padding: 16, backgroundColor: "green", width: "100%" }}>
+      <View style={styles.header}>
         <Text>search</Text>
       </View>
-      <View
-        style={{ flex: 1, padding: 16, backgroundColor: "blue", width: "100%" }}
-      >
+      <View style={styles.list}>
         <Text>list</Text>
       </View>
       <ExpoStatusBar style="auto" />
@@ -34,4 +26,6 @@ const styles = StyleSheet.create({
     // 换成margintop？
     paddingTop: StatusBar.currentHeight,
   },
+  header: { padding: 16, backgroundColor: "green", width: "100%" },
+  list: { flex: 1, padding: 16, backgroundColor: "blue", width: "100%" },
 });
