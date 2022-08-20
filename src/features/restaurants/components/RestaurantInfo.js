@@ -5,11 +5,15 @@ import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 import styled from "styled-components/native";
 
 const RestaurantCard = styled(Card)`
-  background-color: yellow;
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 const RestaurantCardCover = styled(Card.Cover)`
-  padding: 20px;
-  background-color: yellow;
+  padding: ${(props) => props.theme.spaces[3]}};
+  background-color: ${(props) => props.theme.colors.bg.primary};
+`;
+const RestaurantTitle = styled(Title)`
+  padding: ${(props) => props.theme.spaces[3]};
+  color: ${(props) => props.theme.colors.ui.primary};
 `;
 
 // create a component
@@ -28,7 +32,7 @@ const RestaurantInfo = ({ restaurant = {} }) => {
       <RestaurantCard elevation={5}>
         <RestaurantCardCover source={{ uri: "https://picsum.photos/700" }} />
         <Card.Content>
-          <Title>Card title</Title>
+          <RestaurantTitle>Card title</RestaurantTitle>
           <Paragraph>Card content</Paragraph>
         </Card.Content>
       </RestaurantCard>
