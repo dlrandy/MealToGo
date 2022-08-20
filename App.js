@@ -2,18 +2,11 @@ import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
 
+import { Searchbar } from "react-native-paper";
+import RestaurantsScreen from "./src/features/restaurants/screens/RestaurantsScreen";
+
 export default function App() {
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text>search</Text>
-      </View>
-      <View style={styles.list}>
-        <Text>list</Text>
-      </View>
-      <ExpoStatusBar style="auto" />
-    </SafeAreaView>
-  );
+  return <RestaurantsScreen />;
 }
 
 const styles = StyleSheet.create({
@@ -26,6 +19,6 @@ const styles = StyleSheet.create({
     // 换成margintop？
     paddingTop: StatusBar.currentHeight,
   },
-  header: { padding: 16, backgroundColor: "green", width: "100%" },
+  search: { padding: 16, backgroundColor: "green", width: "100%" },
   list: { flex: 1, padding: 16, backgroundColor: "blue", width: "100%" },
 });
