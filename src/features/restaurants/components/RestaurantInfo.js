@@ -1,53 +1,23 @@
 //import liraries
-import React, { Component } from "react";
-import { Image, View, StyleSheet } from "react-native";
-import { Avatar, Text, Card, Title, Paragraph } from "react-native-paper";
-import styled from "styled-components/native";
+import React from "react";
+import { View, StyleSheet } from "react-native";
 import { SvgXml } from "react-native-svg";
 
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 import Spacer from "../../../components/spacer/spacer";
-
-const RestaurantCard = styled(Card)`
-  background-color: ${(props) => props.theme.colors.bg.primary};
-`;
-const RestaurantCardCover = styled(Card.Cover)`
-  padding: ${(props) => props.theme.spaces[3]}};
-  background-color: ${(props) => props.theme.colors.bg.primary};
-`;
-const RestaurantContent = styled(Card.Content)`
-  color: ${(props) => props.theme.colors.ui.primary};
-  font-family: ${(props) => props.theme.fonts.heading};
-  font-size: ${(props) => props.theme.fontSizes.body};
-  padding: ${(props) => props.theme.spaces[3]};
-`;
-const RestaurantTitle = styled(Title)`
-  color: ${(props) => props.theme.colors.ui.primary};
-  font-family: ${(props) => props.theme.fonts.heading};
-  font-size: ${(props) => props.theme.fontSizes.body};
-`;
-const RestaurantAddress = styled(Title)`
-  color: ${(props) => props.theme.colors.ui.primary};
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
-`;
-const Rates = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-const Section = styled.View`
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
-const SectionEnd = styled.View`
-  flex: 1;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: start;
-`;
-
+import Text from "../../../components/typography/Text";
+import {
+  Icon,
+  Rates,
+  RestaurantAddress,
+  RestaurantCard,
+  RestaurantCardCover,
+  RestaurantContent,
+  RestaurantTitle,
+  Section,
+  SectionEnd,
+} from "./RestaurantInfoStyles";
 // create a component
 const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -75,14 +45,12 @@ const RestaurantInfo = ({ restaurant = {} }) => {
             <Rates>{ratings}</Rates>
             <SectionEnd>
               {isClosedTemporarily && (
-                <Text variant="label" style={{ color: "red" }}>
-                  CLOSED TEMPORARILY
-                </Text>
+                <Text variant="error">CLOSED TEMPORARILY</Text>
               )}
               <Spacer position="left" size="medium" />
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
               <Spacer position="left" size="medium" />
-              <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+              <Icon source={{ uri: icon }} />
             </SectionEnd>
           </Section>
           <RestaurantAddress>{address}</RestaurantAddress>
