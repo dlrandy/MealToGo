@@ -39,7 +39,7 @@ export const SectionEnd = styled.View`
   flex: 1;
   flex-direction: row;
   justify-content: flex-end;
-  align-items: start;
+  align-items: flex-start;
 `;
 
 export const Icon = styled.Image`

@@ -1,9 +1,17 @@
 import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import { SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import styled from "styled-components/native";
 import { Searchbar } from "react-native-paper";
 import RestaurantInfo from "../components/RestaurantInfo";
+import Spacer from "../../../components/spacer/spacer";
 
 const SafeArea = styled(SafeAreaView)`
   align-items: center;
@@ -22,9 +30,10 @@ const SearchContainer = styled.View`
   width: 100%;
 `;
 
-const RestaurantListContainer = styled.View`
+const RestaurantListContainer = styled(FlatList).attrs({
+  contentContainerStyle: { padding: 16 },
+})`
   flex: 1;
-  padding: 16px;
   background-color: blue;
   width: 100%;
 `;
@@ -35,9 +44,22 @@ export default function RestaurantsScreen() {
       <SearchContainer>
         <Searchbar placeholder="Search" />
       </SearchContainer>
-      <RestaurantListContainer>
-        <RestaurantInfo />
-      </RestaurantListContainer>
+      <RestaurantListContainer
+        data={[
+          { name: 1 },
+          { name: 2 },
+          { name: 3 },
+          { name: 4 },
+          { name: 5 },
+          { name: 6 },
+        ]}
+        renderItem={() => (
+          <Spacer position="bottom" size="large">
+            <RestaurantInfo />
+          </Spacer>
+        )}
+        keyExtractor={(item) => item.name}
+      />
       <ExpoStatusBar style="auto" />
     </SafeArea>
   );
