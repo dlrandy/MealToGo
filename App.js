@@ -13,6 +13,7 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import SafeArea from "./src/components/utility/SafeArea";
 import RestaurantsScreen from "./src/features/restaurants/screens/RestaurantsScreen";
 import { theme } from "./src/infrastructure/theme/index";
+import { RestaurantsContextProvider } from "./src/services/restaurants/context";
 
 function HomeScreen() {
   return (
@@ -37,7 +38,7 @@ const Tab = createBottomTabNavigator();
 const TAB_ICON = {
   Restaurants: "md-restaurant",
   Map: "md-map",
-  Settings: "md-settimgs",
+  Settings: "md-settings",
 };
 const TabBarIcon = ({ iconName, size, color }) => (
   <Ionicons name={iconName} size={size} color={color} />
@@ -48,7 +49,7 @@ const createCcreenOptions = ({ route }) => {
       let iconName = TAB_ICON[route.name];
 
       // You can return any component that you like here!
-      return <TabBarIcon IconName={iconName} size={size} color={color} />;
+      return <TabBarIcon iconName={iconName} size={size} color={color} />;
     },
     tabBarActiveTintColor: "tomato",
     tabBarInactiveTintColor: "gray",
@@ -76,9 +77,11 @@ export default function App() {
   }
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <MyTabs />
-      </NavigationContainer>
+      <RestaurantsContextProvider>
+        <NavigationContainer>
+          <MyTabs />
+        </NavigationContainer>
+      </RestaurantsContextProvider>
     </ThemeProvider>
   );
 }
